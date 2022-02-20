@@ -1,0 +1,23 @@
+version: "3.0"
+services:
+  #######################################
+  # PHP application Docker container
+  #######################################
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.development
+    ports:
+      # - "80:80"
+      - "8445:443"
+      - "10024:22"
+      - "90:80"
+    volumes:
+      - ./app/:/app/
+      - ./:/docker/
+    cap_add:
+      - SYS_PTRACE
+    privileged: true
+    env_file:
+      - etc/environment.yml
+      - etc/environment.development.yml
