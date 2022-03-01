@@ -247,8 +247,27 @@ WHERE id = 11 AND idSuperheroe = 55; #Utilizamos idSuperheroe para proteger supl
 SELECT * FROM peticiones
 WHERE idSuperheroe = 15 AND realizada = TRUE;
 
-UPDATE superheroes SET evolucion=EXPERTO, updated_at=CURRENT_TIMESTAMP WHERE id= :id
+#UPDATE superheroes SET evolucion=EXPERTO, updated_at=CURRENT_TIMESTAMP WHERE id= :id
 
 SELECT * FROM ciudadanos WHERE idUsuario = 1;
 
 SELECT * FROM superheroes WHERE idUsuario = 3;
+
+SELECT * FROM habilidades;
+
+
+SELECT habilidades.id, habilidades.nombre, valor FROM superheroes_habilidades
+INNER JOIN habilidades
+ON habilidades.id = superheroes_habilidades.idHabilidad
+WHERE superheroes_habilidades.idSuperheroe = 14;
+
+
+SELECT * FROM superheroes_habilidades
+INNER JOIN habilidades
+ON habilidades.id = superheroes_habilidades.idHabilidad
+INNER JOIN superheroes
+ON superheroes.id = superheroes_habilidades.idSuperheroe;
+
+UPDATE superheroes_habilidades 
+        SET valor= 55
+        WHERE idSuperheroe = 2 AND idHabilidad = 9;

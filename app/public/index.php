@@ -30,7 +30,7 @@ $router = new Router();
 $router->add(
     array(
         'name' => 'home',
-        'path' => '/^\/home$/',
+        'path' => '//',
         'action' => [IndexController::class, 'IndexAction']
     ),
 );
